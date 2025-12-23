@@ -933,7 +933,13 @@
           fetchTripData();
         });
 
-        watch(() => shoppingList.value.length, () => nextTick(() => initSortable('.shopping-list-container', shoppingList)));
+                watch(() => shoppingList.value.length, () => nextTick(() => initSortable('.shopping-list-container', shoppingList)));
+
+        // 新增：監聽 Modal 狀態以鎖定背景滾動
+        watch(() => Object.values(modalState).some(v => v), (isOpen) => {
+            if (isOpen) document.body.classList.add('no-scroll');
+            else document.body.classList.remove('no-scroll');
+        });
 
         return {
           appVersion, lang, t, toggleLang, flightCardSkin, toggleSkin,
