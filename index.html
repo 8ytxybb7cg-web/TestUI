@@ -141,7 +141,7 @@
     <header class="sticky top-0 z-40 pt-12 pb-2 px-6 flex justify-between items-end bg-[#F2F2F7]/90 backdrop-blur-md transition-all duration-300">
       <div>
         <div class="text-[10px] font-bold text-gray-400 uppercase tracking-wide mb-0.5 font-mono">
-           TRAVEL SYNC 【{{ appVersion }}】 <span :class="{'text-blue-500 animate-pulse': syncState === 'saving', 'text-red-500': syncState === 'error'}">{{ syncStatusText }}</span>
+           TRAVEL SYNC {{ appVersion }} <span :class="{'text-blue-500 animate-pulse': syncState === 'saving', 'text-red-500': syncState === 'error'}">{{ syncStatusText }}</span>
         </div>
         <h1 class="text-3xl font-bold text-black tracking-tight flex items-center gap-2">
           {{ settings.route || 'HKG ✈️ TPE' }}
@@ -371,7 +371,7 @@
 
         <div class="flex flex-col items-center justify-center pb-8 opacity-30 select-none pointer-events-none">
             <div class="text-[10px] font-bold uppercase tracking-widest">TRAVEL SYNC</div>
-            <div class="text-[9px] font-mono mt-0.5">【{{ appVersion }}】</div>
+            <div class="text-[9px] font-mono mt-0.5">{{ appVersion }}</div>
         </div>
 
       </div>
@@ -659,7 +659,7 @@
 
     createApp({
       setup() {
-        const appVersion = ref('v251222-6.2');
+        const appVersion = ref('v251228-7.2');
         const currentTab = ref('首頁');
         const syncState = ref('loading');
         const isInitialized = ref(false);
