@@ -725,13 +725,20 @@
         const currentLiveRate = ref(4.1);
         const lastRateUpdateLabel = ref('--:--');
         
-        const displayedRate = computed(() => {
-             // 3% Fee applied
-             let r = currentLiveRate.value * 0.97; 
-             if(rateDisplayMode.value === 1) r = 1 / r;
-             return r.toFixed(4);
+                const displayedRate = computed(() => {
+             // 1. 先取得原始匯率
+             let r = currentLiveRate.value; 
+             
+             // 2. 如果是反向顯示 (Local -> Home)，先進行倒數
+             if (rateDisplayMode.value === 1) {
+                 r = 1 / r;
+             }
+             
+             // 3. 無論哪個方向，最後才扣除 3% 手續費 (* 0.97)
+             // 這樣確保數值永遠是「變小」，符合使用者預期的「扣手續費」直覺
+             return (r * 0.97).toFixed(4);
         });
-        
+   
         const totalExpense = computed(() => {
             let totalHome = 0;
             expenses.value.forEach(e => {
