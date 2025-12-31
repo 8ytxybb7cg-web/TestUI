@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
-  <title>Travel Sync Ultimate (v7.4 Hybrid)</title>
+  <title>Travel Sync v7.4</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -202,34 +202,27 @@
         <div class="relative transition-all duration-500 group">
              <div class="rounded-[24px] overflow-hidden shadow-xl font-sans relative flex flex-col min-h-[240px]">
                 
-                               <div class="hkg-header px-5 py-4 relative">
-                    <div class="flex justify-between items-center relative z-20">
-                        <div class="flex items-center gap-2 opacity-80">
-                            <i class="ph-fill ph-airplane-in-flight text-[#007AFF]"></i>
-                            <span class="text-[10px] font-bold uppercase tracking-widest">{{ t('activeFlightText') }}</span>
-                        </div>
-
-                        <button @click.stop="openFlightModal" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center backdrop-blur-md transition-colors">
-                            <i class="ph-bold ph-pencil-simple text-white text-sm"></i>
-                        </button>
-                    </div>
-
-                    <div class="flex justify-center mt-3 mb-1 relative z-20">
+                                             <div class="hkg-header px-5 py-4 relative">
+                    <div class="flex justify-center mb-2 relative z-20">
                         <div class="bg-black/20 rounded-lg p-0.5 flex backdrop-blur-sm border border-white/10">
-                            <button @click.stop="currentFlightView='outbound'" class="px-3 py-1 text-[10px] rounded-md flight-tab" :class="{'active': currentFlightView==='outbound'}">{{ t('outbound') }}</button>
+                             <button @click.stop="currentFlightView='outbound'" class="px-3 py-1 text-[10px] rounded-md flight-tab" :class="{'active': currentFlightView==='outbound'}">{{ t('outbound') }}</button>
                             <button @click.stop="currentFlightView='return'" class="px-3 py-1 text-[10px] rounded-md flight-tab" :class="{'active': currentFlightView==='return'}">{{ t('return') }}</button>
                         </div>
                     </div>
 
-                    <div class="flex flex-col items-center justify-center mt-2 mb-1">
-                        <span class="text-[10px] opacity-70 uppercase tracking-widest font-semibold">{{ t('gate') }}</span>
-                        <span class="text-5xl font-bold leading-none mt-1 hkg-yellow-text tracking-tighter">{{ displayedFlight.gate || '--' }}</span>
+                    <div class="absolute top-4 right-5 z-30 flex flex-col items-end gap-2">
+                        <button @click.stop="openFlightModal" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center backdrop-blur-md transition-colors">
+                            <i class="ph-bold ph-pencil-simple text-white text-sm"></i>
+                        </button>
+                        
+                        <a v-if="displayedFlight.liveLink" :href="displayedFlight.liveLink" target="_blank" class="flex items-center gap-1.5 bg-white/20 hover:bg-white/30 border border-white/20 px-2.5 py-1 rounded-full text-[10px] font-bold text-white transition-all active:scale-95 backdrop-blur-md">
+                            <i class="ph-fill ph-broadcast text-[#34C759] animate-pulse"></i> Flighty <i class="ph-bold ph-arrow-square-out opacity-70"></i>
+                        </a>
                     </div>
 
-                    <div class="flex justify-center mt-2">
-                         <a v-if="displayedFlight.liveLink" :href="displayedFlight.liveLink" target="_blank" class="flex items-center gap-1.5 text-[10px] font-bold text-white/80 hover:text-white transition-colors bg-white/10 px-2 py-1 rounded-md">
-                           <i class="ph-fill ph-broadcast text-[#34C759] animate-pulse"></i> Flighty <i class="ph-bold ph-arrow-square-out"></i>
-                        </a>
+                    <div class="flex flex-col items-center justify-center mt-4 mb-2">
+                        <span class="text-[10px] opacity-70 uppercase tracking-widest font-semibold">{{ t('gate') }}</span>
+                        <span class="text-5xl font-bold leading-none mt-1 hkg-yellow-text tracking-tighter">{{ displayedFlight.gate || '--' }}</span>
                     </div>
                 </div>
 
@@ -741,7 +734,7 @@
 
     createApp({
       setup() {
-        const appVersion = ref('v7.4 Hybrid');
+        const appVersion = ref('v251231-7.4');
         const currentTab = ref('首頁');
         const syncState = ref('loading');
         const isInitialized = ref(false);
