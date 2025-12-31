@@ -202,29 +202,31 @@
         <div class="relative transition-all duration-500 group">
              <div class="rounded-[24px] overflow-hidden shadow-xl font-sans relative flex flex-col min-h-[240px]">
                 
-                <div class="hkg-header px-5 py-4 relative">
-                    <div class="flex justify-between items-start">
+                               <div class="hkg-header px-5 py-4 relative">
+                    <div class="flex justify-between items-center relative z-20">
                         <div class="flex items-center gap-2 opacity-80">
                             <i class="ph-fill ph-airplane-in-flight text-[#007AFF]"></i>
                             <span class="text-[10px] font-bold uppercase tracking-widest">{{ t('activeFlightText') }}</span>
                         </div>
 
-                        <div class="absolute left-1/2 -translate-x-1/2 top-4 bg-black/20 rounded-lg p-0.5 flex backdrop-blur-sm border border-white/10">
-                            <button @click.stop="currentFlightView='outbound'" class="px-3 py-1 text-[10px] rounded-md flight-tab" :class="{'active': currentFlightView==='outbound'}">{{ t('outbound') }}</button>
-                            <button @click.stop="currentFlightView='return'" class="px-3 py-1 text-[10px] rounded-md flight-tab" :class="{'active': currentFlightView==='return'}">{{ t('return') }}</button>
-                        </div>
-
-                        <button @click.stop="openFlightModal" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center backdrop-blur-md transition-colors z-20">
+                        <button @click.stop="openFlightModal" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center backdrop-blur-md transition-colors">
                             <i class="ph-bold ph-pencil-simple text-white text-sm"></i>
                         </button>
                     </div>
 
-                    <div class="flex flex-col items-center justify-center mt-3 mb-1">
+                    <div class="flex justify-center mt-3 mb-1 relative z-20">
+                        <div class="bg-black/20 rounded-lg p-0.5 flex backdrop-blur-sm border border-white/10">
+                            <button @click.stop="currentFlightView='outbound'" class="px-3 py-1 text-[10px] rounded-md flight-tab" :class="{'active': currentFlightView==='outbound'}">{{ t('outbound') }}</button>
+                            <button @click.stop="currentFlightView='return'" class="px-3 py-1 text-[10px] rounded-md flight-tab" :class="{'active': currentFlightView==='return'}">{{ t('return') }}</button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center justify-center mt-2 mb-1">
                         <span class="text-[10px] opacity-70 uppercase tracking-widest font-semibold">{{ t('gate') }}</span>
                         <span class="text-5xl font-bold leading-none mt-1 hkg-yellow-text tracking-tighter">{{ displayedFlight.gate || '--' }}</span>
                     </div>
 
-                    <div class="absolute right-5 top-14 text-right z-20">
+                    <div class="flex justify-center mt-2">
                          <a v-if="displayedFlight.liveLink" :href="displayedFlight.liveLink" target="_blank" class="flex items-center gap-1.5 text-[10px] font-bold text-white/80 hover:text-white transition-colors bg-white/10 px-2 py-1 rounded-md">
                            <i class="ph-fill ph-broadcast text-[#34C759] animate-pulse"></i> Flighty <i class="ph-bold ph-arrow-square-out"></i>
                         </a>
@@ -237,12 +239,12 @@
                             <span class="text-3xl font-bold text-slate-800 tracking-tighter">{{ displayedFlight.fromCode }}</span>
                             <span class="text-xs font-bold text-gray-400 mt-0.5">{{ t('terminal') }} {{ displayedFlight.fromTerminal || '-' }}</span>
                          </div>
-                         <div class="flex flex-col items-center justify-center w-1/3 pb-2">
-                             <span class="text-sm font-bold text-slate-600 mb-1">{{ displayedFlight.code }}</span>
-                             <div class="w-full h-[1px] bg-gray-200 relative flex items-center justify-center">
+                                                  <div class="flex flex-col items-center justify-center w-1/3 pb-2">
+                             <span class="text-sm font-bold text-slate-600">{{ displayedFlight.code }}</span>
+                             <div class="w-full h-[1px] bg-gray-200 relative flex items-center justify-center my-3">
                                  <i class="ph-fill ph-airplane text-[#353E53] text-lg bg-white px-1 rotate-90"></i>
                              </div>
-                             <span class="text-[9px] text-gray-400 mt-1 uppercase tracking-wide">{{ displayedFlight.title }}</span>
+                             <span class="text-[9px] text-gray-400 uppercase tracking-wide">{{ displayedFlight.title }}</span>
                          </div>
                          <div class="flex flex-col items-center w-1/3">
                             <span class="text-3xl font-bold text-slate-800 tracking-tighter">{{ displayedFlight.toCode }}</span>
