@@ -589,22 +589,34 @@
           </div>
       </div>
 
-      <div v-if="currentTab === '設定'" class="animate-fade-in pb-24">
+           <div v-if="currentTab === '設定'" class="animate-fade-in pb-24">
          <div class="ios-card p-5 space-y-6">
-             <h2 class="text-xl font-bold mb-4">Settings</h2>
-             <div><label class="block text-xs font-bold text-gray-400 mb-2 uppercase">Route Header</label><input v-model="editingSettings.route" class="ios-input font-bold" placeholder="HKG ✈️ KIX"></div>
-             <div class="grid grid-cols-2 gap-4">
-                 <div><label class="block text-xs font-bold text-gray-400 mb-2 uppercase">Start Date</label><input v-model="editingSettings.startDate" type="date" class="ios-input"></div>
-                 <div><label class="block text-xs font-bold text-gray-400 mb-2 uppercase">End Date</label><input v-model="editingSettings.endDate" type="date" class="ios-input"></div>
+             <h2 class="text-xl font-bold mb-4">{{ t('settings') }}</h2>
+             <div>
+                 <label class="block text-xs font-bold text-gray-400 mb-2 uppercase">{{ t('routeHeader') }}</label>
+                 <input v-model="editingSettings.route" class="ios-input font-bold" placeholder="HKG ✈️ KIX">
              </div>
              <div class="grid grid-cols-2 gap-4">
-                 <div><label class="block text-xs font-bold text-gray-400 mb-2 uppercase">Local Currency</label><input v-model="editingSettings.localCurrency" class="ios-input font-mono uppercase" placeholder="TWD"></div>
-                 <div><label class="block text-xs font-bold text-gray-400 mb-2 uppercase">Home Currency</label><input v-model="editingSettings.homeCurrency" class="ios-input font-mono uppercase" placeholder="HKD"></div>
+                 <div><label class="block text-xs font-bold text-gray-400 mb-2 uppercase">{{ t('startDate') }}</label><input v-model="editingSettings.startDate" type="date" class="ios-input"></div>
+                 <div><label class="block text-xs font-bold text-gray-400 mb-2 uppercase">{{ t('endDate') }}</label><input v-model="editingSettings.endDate" type="date" class="ios-input"></div>
              </div>
-             <div><label class="block text-xs font-bold text-gray-400 mb-2 uppercase">Weather Location Name</label><input v-model="editingSettings.weatherLoc" class="ios-input" placeholder="e.g. Taipei"></div>
+             <div class="grid grid-cols-2 gap-4">
+                 <div><label class="block text-xs font-bold text-gray-400 mb-2 uppercase">{{ t('localCurr') }}</label><input v-model="editingSettings.localCurrency" class="ios-input font-mono uppercase" placeholder="TWD"></div>
+                 <div><label class="block text-xs font-bold text-gray-400 mb-2 uppercase">{{ t('homeCurr') }}</label><input v-model="editingSettings.homeCurrency" class="ios-input font-mono uppercase" placeholder="HKD"></div>
+             </div>
+             <div class="grid grid-cols-2 gap-4">
+                 <div>
+                     <label class="block text-xs font-bold text-gray-400 mb-2 uppercase">{{ t('weatherLoc') }} (中文)</label>
+                     <input v-model="editingSettings.weatherLoc" class="ios-input" placeholder="e.g. 台北">
+                 </div>
+                 <div>
+                     <label class="block text-xs font-bold text-gray-400 mb-2 uppercase">{{ t('weatherLoc') }} (EN)</label>
+                     <input v-model="editingSettings.weatherLocEn" class="ios-input" placeholder="e.g. Taipei">
+                 </div>
+             </div>
              <div class="flex gap-3 mt-4">
-                 <button @click="cancelSettings" class="btn-ios-cancel">Cancel</button>
-                 <button @click="saveSettings" class="btn-ios-primary">Save Changes</button>
+                 <button @click="cancelSettings" class="btn-ios-cancel">{{ t('cancel') }}</button>
+                 <button @click="saveSettings" class="btn-ios-primary">{{ t('save') }}</button>
              </div>
           </div>
       </div>
@@ -1042,7 +1054,7 @@
                 'outbound': { zh: '去程', en: 'Outbound' },
                 'return': { zh: '回程', en: 'Return' },
                 'gate': { zh: '閘口', en: 'GATE' },
-                'terminal': { zh: '客運大樓', en: ' ' },
+                'terminal': { zh: ' ', en: ' ' },
                 'estDep': { zh: '預計起飛', en: 'Est. Dep' },
                 'estArr': { zh: '預計抵達', en: 'Est. Arr' },
                 'economy': { zh: '經濟艙', en: 'Economy' },
