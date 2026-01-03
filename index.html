@@ -452,7 +452,7 @@
              </div>
              <button @click="openItineraryModal(null)" class="flex-shrink-0 w-[70px] h-[70px] rounded-xl bg-blue-500 text-white shadow-lg flex flex-col items-center justify-center active:scale-95 transition">
                  <i class="ph-bold ph-plus text-2xl mb-1"></i>
-                 <span class="text-[10px] font-bold">Add</span>
+                                  <span class="text-[10px] font-bold">{{ t('add') }}</span>
              </button>
          </div>
 
@@ -1042,7 +1042,7 @@
                 'outbound': { zh: '去程', en: 'Outbound' },
                 'return': { zh: '回程', en: 'Return' },
                 'gate': { zh: '閘口', en: 'GATE' },
-                'terminal': { zh: '', en: 'T' },
+                'terminal': { zh: '客運大樓', en: ' ' },
                 'estDep': { zh: '預計起飛', en: 'Est. Dep' },
                 'estArr': { zh: '預計抵達', en: 'Est. Arr' },
                 'economy': { zh: '經濟艙', en: 'Economy' },
@@ -1073,7 +1073,7 @@
                 'airline': { zh: '航空公司', en: 'Airline Name' },
                 'depTerm': { zh: '出發客運大樓', en: 'Dep Term' },
                 'arrTerm': { zh: '抵達客運大樓', en: 'Arr Term' },
-                'trackingUrl': { zh: 'Flighty/追蹤連結', en: 'Tracking URL' },
+                'trackingUrl': { zh: '追蹤連結', en: 'Tracking URL' },
 
                 // 支出
                 'filter_all': { zh: '全部', en: 'All' },
