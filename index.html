@@ -796,30 +796,30 @@
     </div>
 
     <div v-if="shoppingModalOpen" class="modal-backdrop" @click.self="shoppingModalOpen=false">
-        <div class="ios-modal-container">
-            <div class="ios-modal-header">Shopping Item</div>
+                <div class="ios-modal-container">
+            <div class="ios-modal-header">{{ t('shoppingItem') }}</div>
             <div class="ios-modal-body space-y-4">
-                <input v-model="newShoppingItem.name" class="ios-input font-medium" placeholder="Item Name">
+                <input v-model="newShoppingItem.name" class="ios-input font-medium" :placeholder="t('itemName')">
                 <div class="border-t border-gray-100 pt-4">
-                    <label class="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wide">Image Reference</label>
+                    <label class="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wide">{{ t('imgRef') }}</label>
                     <label class="flex flex-col items-center justify-center w-full p-6 border border-dashed border-gray-300 rounded-2xl cursor-pointer hover:bg-gray-50 transition">
-                        <div class="text-center" v-if="!newShoppingItem.imageURL && !tempUploadPreview">
+                         <div class="text-center" v-if="!newShoppingItem.imageURL && !tempUploadPreview">
                             <i class="ph ph-image text-3xl text-gray-300 mb-2"></i>
-                            <div class="text-[#007AFF] text-sm font-medium">Upload Image</div>
-                        </div>
-                        <div v-else class="text-center text-[#007AFF] font-bold text-sm">{{ tempUploadPreview ? 'Image Selected' : 'Change Image' }}</div>
+                            <div class="text-[#007AFF] text-sm font-medium">{{ t('uploadImg') }}</div>
+                         </div>
+                        <div v-else class="text-center text-[#007AFF] font-bold text-sm">{{ tempUploadPreview ? t('imgSelected') : t('changeImg') }}</div>
                         <input type="file" accept="image/*" class="hidden" @change="handleFileUpload">
                     </label>
-                    <input v-model="newShoppingItem.imageURL" class="w-full mt-3 p-2 text-xs text-gray-400 bg-transparent text-center border-none focus:outline-none" placeholder="Or paste URL here">
-                    <div v-if="tempUploadPreview || newShoppingItem.imageURL" class="mt-4 flex justify-center">
+                    <input v-model="newShoppingItem.imageURL" class="w-full mt-3 p-2 text-xs text-gray-400 bg-transparent text-center border-none focus:outline-none" :placeholder="t('pasteUrl')">
+                     <div v-if="tempUploadPreview || newShoppingItem.imageURL" class="mt-4 flex justify-center">
                         <img :src="tempUploadPreview || newShoppingItem.imageURL" class="h-24 w-24 object-cover rounded-2xl shadow-sm border border-gray-100">
                     </div>
                 </div>
             </div>
             <div class="ios-modal-footer">
-                <button v-if="newShoppingItem.id" @click="removeShoppingItem(newShoppingItem.id); shoppingModalOpen=false" class="btn-ios-cancel text-red-500">Delete</button>
-                <button @click="shoppingModalOpen=false" class="btn-ios-cancel">Cancel</button>
-                <button @click="saveShoppingItem" class="btn-ios-primary">Save</button>
+                <button v-if="newShoppingItem.id" @click="removeShoppingItem(newShoppingItem.id); shoppingModalOpen=false" class="btn-ios-cancel text-red-500">{{ t('delete') }}</button>
+                <button @click="shoppingModalOpen=false" class="btn-ios-cancel">{{ t('cancel') }}</button>
+                <button @click="saveShoppingItem" class="btn-ios-primary">{{ t('save') }}</button>
             </div>
         </div>
     </div>
