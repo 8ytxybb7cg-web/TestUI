@@ -753,20 +753,20 @@
     </div>
     
     <div v-if="memberModalOpen" class="modal-backdrop" @click.self="memberModalOpen=false">
-        <div class="ios-modal-container">
-             <div class="ios-modal-header">Manage Members</div>
+                <div class="ios-modal-container">
+             <div class="ios-modal-header">{{ t('manageMembers') }}</div>
               <div class="ios-modal-body space-y-3">
                  <div v-for="(m, idx) in members" :key="idx" class="flex justify-between items-center p-3 bg-white rounded-xl shadow-sm">
                      <span class="font-bold">{{ m }}</span>
                      <button v-if="members.length > 1" @click="removeMember(m)" class="text-red-500"><i class="ph-bold ph-trash"></i></button>
                  </div>
                  <div class="flex gap-2 mt-4">
-                     <input v-model="newMemberName" class="ios-input" placeholder="New Name">
+                     <input v-model="newMemberName" class="ios-input" :placeholder="t('newName')">
                      <button @click="addMember" class="bg-black text-white px-4 rounded-xl font-bold"><i class="ph-bold ph-plus"></i></button>
                  </div>
              </div>
              <div class="ios-modal-footer">
-                 <button @click="memberModalOpen=false" class="btn-ios-cancel">Done</button>
+                 <button @click="memberModalOpen=false" class="btn-ios-cancel">{{ t('done') }}</button>
              </div>
         </div>
     </div>
