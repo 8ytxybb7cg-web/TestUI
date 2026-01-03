@@ -669,15 +669,15 @@
     </div>
 
     <div v-if="expenseModalOpen" class="modal-backdrop" @click.self="expenseModalOpen=false">
-        <div class="ios-modal-container">
+               <div class="ios-modal-container">
             <div class="ios-modal-header relative">
                  <div class="flex items-center justify-center gap-2 text-[#007AFF] font-bold text-lg">
                      <i class="ph" :class="getCategoryIcon(newExpense.category)"></i>
-                     <span>{{ newExpense.category }}</span>
+                     <span>{{ t(newExpense.category) }}</span>
                      <i class="ph ph-caret-down text-sm"></i>
                  </div>
                  <select v-model="newExpense.category" class="absolute inset-0 w-full h-full opacity-0 z-10">
-                    <option v-for="cat in expenseCats" :key="cat" :value="cat.name">{{ cat.name }}</option>
+                    <option v-for="cat in expenseCats" :key="cat" :value="cat.name">{{ t(cat.name) }}</option>
                  </select>
             </div>
             <div class="ios-modal-body calc-body gap-2">
@@ -697,14 +697,14 @@
                  </div>
                  <div class="flex flex-col gap-2 p-2 bg-gray-100/60 rounded-xl mb-1">
                     <div class="flex items-center gap-2">
-                        <span class="text-[10px] font-bold text-gray-400 w-12 text-right">Payer</span>
+                        <span class="text-[10px] font-bold text-gray-400 w-12 text-right">{{ t('payer') }}</span>
                         <select v-model="newExpense.payer" class="flex-1 bg-white h-8 rounded-lg text-xs font-bold px-2 border border-gray-200">
                            <option v-for="m in members" :key="m" :value="m">{{ m }}</option>
                         </select>
                     </div>
                      <div class="flex items-start gap-2">
                         <div class="w-12 text-right mt-1.5 flex flex-col items-end">
-                            <button @click="toggleAllParticipants" class="text-[10px] font-bold text-[#007AFF]">All</button>
+                             <button @click="toggleAllParticipants" class="text-[10px] font-bold text-[#007AFF]">{{ t('all') }}</button>
                          </div>
                          <div class="flex-1 flex flex-wrap gap-1.5">
                              <button v-for="m in members" :key="m" @click="toggleParticipant(m)"
@@ -716,7 +716,7 @@
                      </div>
                 </div>
                  <div class="flex gap-2">
-                     <input v-model="newExpense.name" class="ios-input flex-1 text-center font-medium h-10 text-sm" placeholder="Description">
+                     <input v-model="newExpense.name" class="ios-input flex-1 text-center font-medium h-10 text-sm" :placeholder="t('desc')">
                      <input v-model="newExpense.date" type="date" class="ios-input w-32 text-gray-600 text-sm h-10 text-center">
                  </div>
                  <div class="flex gap-2 mb-1 p-1 bg-gray-200/50 rounded-xl">
@@ -742,12 +742,12 @@
                      <button class="calc-btn op" @click="handleCalcInput('=')">=</button>
                      <button class="calc-btn col-span-2" @click="handleCalcInput('0')">0</button>
                      <button class="calc-btn" @click="handleCalcInput('.')">.</button>
-                     <button class="calc-btn done-btn" @click="saveExpense">Done</button>
+                     <button class="calc-btn done-btn" @click="saveExpense">{{ t('done') }}</button>
                  </div>
             </div>
             <div class="ios-modal-footer">
-                <button v-if="newExpense.id" @click="removeExpense(newExpense.id); expenseModalOpen=false" class="btn-ios-cancel text-red-500">Delete</button>
-                <button @click="expenseModalOpen=false" class="btn-ios-cancel">Cancel</button>
+                <button v-if="newExpense.id" @click="removeExpense(newExpense.id); expenseModalOpen=false" class="btn-ios-cancel text-red-500">{{ t('delete') }}</button>
+                <button @click="expenseModalOpen=false" class="btn-ios-cancel">{{ t('cancel') }}</button>
             </div>
         </div>
     </div>
