@@ -772,25 +772,25 @@
     </div>
 
     <div v-if="itineraryModalOpen" class="modal-backdrop" @click.self="itineraryModalOpen=false">
-        <div class="ios-modal-container">
-            <div class="ios-modal-header">Edit Event</div>
+                <div class="ios-modal-container">
+            <div class="ios-modal-header">{{ t('editEvent') }}</div>
             <div class="ios-modal-body space-y-3">
                 <select v-model="newItineraryItem.dayIndex" class="ios-input">
                     <option v-for="(d, i) in dayList" :key="i" :value="i">Day {{ i + 1 }} - {{ d.dateStr }}</option>
                 </select>
                 <div class="flex gap-2">
                     <input type="time" v-model="newItineraryItem.time" class="ios-input !w-auto text-center font-bold">
-                    <input v-model="newItineraryItem.title" class="ios-input flex-1" placeholder="Title">
+                    <input v-model="newItineraryItem.title" class="ios-input flex-1" :placeholder="t('title')">
                 </div>
                 <div class="relative">
                     <i class="ph ph-map-pin absolute left-3 top-3.5 text-gray-400"></i>
-                    <input v-model="newItineraryItem.address" class="ios-input pl-10 text-sm" placeholder="Google Map Address">
+                    <input v-model="newItineraryItem.address" class="ios-input pl-10 text-sm" :placeholder="t('mapAddr')">
                 </div>
-                <textarea v-model="newItineraryItem.note" class="ios-input" placeholder="Notes" rows="3"></textarea>
+                <textarea v-model="newItineraryItem.note" class="ios-input" :placeholder="t('notes')" rows="3"></textarea>
             </div>
             <div class="ios-modal-footer">
-                <button @click="itineraryModalOpen=false" class="btn-ios-cancel">Cancel</button>
-                <button @click="saveItineraryItem" class="btn-ios-primary">Save</button>
+                <button @click="itineraryModalOpen=false" class="btn-ios-cancel">{{ t('cancel') }}</button>
+                <button @click="saveItineraryItem" class="btn-ios-primary">{{ t('save') }}</button>
             </div>
         </div>
     </div>
